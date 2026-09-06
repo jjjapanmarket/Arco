@@ -15,12 +15,14 @@ import kotlin.math.sin
  * ここが返すのは目的地の絶対方位でしかない。端末がどちらを向いているかは別のセンサーの話で、
  * 矢印の向き（絶対方位 − 端末の向き）は上の層で合成する。歩行中と停止中でどちらの方位ソースを
  * 信じるかの判断も別のルール（docs/architecture.md「方位の切り替えはドメインの判断」）。
+ *
+ * 座標が非有限だと方角も定まらないので null を返す。呼ぶ側は矢印を出さない選択ができる。
  */
 class CalculateBearingUseCase {
     operator fun invoke(
         from: Coordinate,
         to: Coordinate,
-    ): Bearing {
+    ): Bearing? {
         val fromLatitude = from.latitude.toRadians()
         val toLatitude = to.latitude.toRadians()
         val longitudeDelta = (to.longitude - from.longitude).toRadians()
