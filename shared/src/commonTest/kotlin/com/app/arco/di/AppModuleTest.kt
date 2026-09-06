@@ -2,6 +2,9 @@ package com.app.arco.di
 
 import com.app.arco.app.AppTabBridge
 import com.app.arco.core.common.AppNavigator
+import com.app.arco.core.domain.CalculateBearingUseCase
+import com.app.arco.core.domain.CalculateDistanceUseCase
+import com.app.arco.core.domain.DetectArrivalUseCase
 import org.koin.core.Koin
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
@@ -26,6 +29,9 @@ class AppModuleTest {
         val koin = startArcoKoin()
         koin.get<AppNavigator>()
         koin.get<AppTabBridge>()
+        koin.get<CalculateDistanceUseCase>()
+        koin.get<CalculateBearingUseCase>()
+        koin.get<DetectArrivalUseCase>()
     }
 
     @Test
