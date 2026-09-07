@@ -56,7 +56,9 @@ internal val arcoDarkColorScheme: ColorScheme =
 internal val arcoLightColorScheme: ColorScheme =
     lightColorScheme(
         primary = RadarMintDeep,
-        onPrimary = DaySurface,
+        // ミントの上は白ではなく暗い文字にする。白だと 3.4:1 で WCAG AA の 4.5:1 に届かない。
+        // ダーク側でミントの上に暗い文字を置いているのと同じ扱い
+        onPrimary = DayText,
         secondary = DayTextMuted,
         onSecondary = DaySurface,
         background = DayBase,
